@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+*-master
 
 # testing
 /coverage
@@ -33,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# others
+*.zip
+_NOTES.md
