@@ -15,6 +15,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "sass": "1.66.1",
     "standard": "17.1.0"
   },
   "eslintConfig": {
