@@ -1,0 +1,77 @@
+// ? Checkbox
+.checkbox {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid #0E1A33;
+  border-radius: .3rem;
+  overflow: hidden;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  .checked {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #2960AB;
+
+    .icon {
+      width: 90%;
+      height: auto;
+      stroke: #E6ECF3;
+      stroke-width: 3px;
+    }
+  }
+}
+
+// ? Task Item
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  list-style: none;
+  min-height: 3rem;
+  padding: .5rem 1rem;
+  border-left: 4px solid #2960AB;
+  border-top-right-radius: .4rem;
+  border-bottom-right-radius: .4rem;
+
+  &:hover {
+    background-color: rgba(#2960AB, .2);
+  }
+
+  .title {
+    flex-grow: 1;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &.completed {
+      color: rgba(#0E1A33, .6);
+      text-decoration: line-through;
+    }
+  }
+
+  .deleteButton {
+    width: 2rem;
+    height: 2rem;
+    background: none;
+    border: none;
+    border-radius: .3rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(#BF0606, .2);
+    }
+
+    .icon {
+      width: auto;
+      height: 70%;
+      stroke: #BF0606;
+    }
+  }
+}

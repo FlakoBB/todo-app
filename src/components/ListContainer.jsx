@@ -1,4 +1,5 @@
 import styles from '@styles/listContainer.module.scss'
+import Task from './Task'
 
 const ListContainer = () => {
   const tasks = [
@@ -8,23 +9,23 @@ const ListContainer = () => {
     },
     {
       title: 'Tarea 2',
-      isCompleted: false
+      isCompleted: true
     },
     {
       title: 'Tarea 3',
       isCompleted: false
     },
     {
-      title: 'Tarea 3',
+      title: 'Tarea 4',
       isCompleted: false
     }
   ]
 
   return (
     <section className={styles.container}>
-      <ul>
+      <ul className={styles.list}>
         {
-          tasks.map((task, index) => <li key={index}>{task.title}</li>)
+          tasks.map((task, index) => <Task key={index} data={task} id={index} />)
         }
       </ul>
     </section>
