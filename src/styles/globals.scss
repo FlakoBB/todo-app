@@ -2,13 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #2960AB;
+  color: #0E1A33;
 }
 
 html,
 body {
   min-height: 100dvh;
   font-size: 16px;
+  background-color: #E6ECF3;
 }
 
 .icon {
@@ -16,4 +17,18 @@ body {
   height: auto;
   stroke: green;
   fill: greenyellow;
+}
+
+@media (max-width: 767px) {
+  html,
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1440px) {
+  html,
+  body {
+    font-size: 18px;
+  }
 }

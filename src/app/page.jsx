@@ -1,10 +1,13 @@
-import { Trash } from '@icons'
+import Footer from '@/components/Footer'
+import ListContainer from '@/components/ListContainer'
+import styles from '@styles/page.module.scss'
 
 export default function Home () {
   return (
-    <>
-      <h1>TODO APP Jost FONT</h1>
-      <Trash className='icon' />
-    </>
+    <main className={styles.container}>
+      <h1>TODO APP</h1>
+      <ListContainer />
+      <Footer />
+    </main>
   )
 }
