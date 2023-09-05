@@ -30,7 +30,7 @@ const Task = ({ data, id }) => {
     <li className={styles.item}>
       <Checkbox id={id} state={data.isCompleted} />
       <label htmlFor={id} className={`${styles.title} ${data.isCompleted && styles.completed}`}>{data.title}</label>
-      <button className={styles.deleteButton}>
+      <button type='button' className={styles.deleteButton}>
         <Trash className={styles.icon} />
       </button>
     </li>

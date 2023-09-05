@@ -5,11 +5,14 @@
   color: #0E1A33;
 }
 
-html,
-body {
+html {
   min-height: 100dvh;
   font-size: 16px;
   background-color: #E6ECF3;
+}
+
+body {
+  padding: 0rem 2rem;
 }
 
 @media (max-width: 767px) {

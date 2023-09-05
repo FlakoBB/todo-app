@@ -1,5 +1,6 @@
 // ? Checkbox
 .checkbox {
+  flex-shrink: 0;
   width: 1.5rem;
   height: 1.5rem;
   border: 1px solid #0E1A33;
@@ -30,6 +31,7 @@
 
 // ? Task Item
 .item {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,9 +39,18 @@
   list-style: none;
   min-height: 3rem;
   padding: .5rem 1rem;
-  border-left: 4px solid #2960AB;
   border-top-right-radius: .4rem;
   border-bottom-right-radius: .4rem;
+
+  &::before {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    border-right: 4px solid #2960AB;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    content: '';
+  }
 
   &:hover {
     background-color: rgba(#2960AB, .2);
@@ -48,6 +59,7 @@
   .title {
     flex-grow: 1;
     font-size: 1.2rem;
+    text-wrap: balance;
     cursor: pointer;
 
     &.completed {
@@ -57,6 +69,7 @@
   }
 
   .deleteButton {
+    flex-shrink: 0;
     width: 2rem;
     height: 2rem;
     background: none;

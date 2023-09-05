@@ -8,7 +8,7 @@ const ListContainer = () => {
       isCompleted: false
     },
     {
-      title: 'Tarea 2',
+      title: 'Sacar a pasear al perro',
       isCompleted: true
     },
     {
@@ -16,7 +16,7 @@ const ListContainer = () => {
       isCompleted: false
     },
     {
-      title: 'Tarea 4',
+      title: 'Repasar temas de react para presentar el examen de certificacion',
       isCompleted: false
     }
   ]
