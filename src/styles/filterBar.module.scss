@@ -1,0 +1,44 @@
+@keyframes appear {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  } to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 2rem;
+  border-bottom: 2px solid rgba(#0E1A33, .2);
+  
+  .option {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 2rem;
+    width: 6rem;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    cursor: pointer;
+
+    &.active::after {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      content: '';
+      width: 100%;
+      border-top: 4px solid #2960AB;
+      border-radius: 4px 4px 0 0;
+      animation: appear ease-out .3s;
+    }
+
+    input[type='radio'] {
+      display: none;
+    }
+  }
+}
