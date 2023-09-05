@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  gap: 2rem;
+  gap: 1rem;
 
   .list {
     display: flex;
@@ -12,5 +12,34 @@
     align-items: stretch;
     justify-content: flex-start;
     gap: 1.5rem;
+  }
+
+  .deleteAllButton {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    width: 10rem;
+    height: 3rem;
+    background-color: #BF0606;
+    font-size: 1.2rem;
+    color: #E6ECF3;
+    font-weight: 600;
+    border-radius: .4rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(#BF0606, .8);
+    }
+
+    .icon {
+      width: 1em;
+      height: auto;
+      stroke: #E6ECF3;
+      stroke-width: 2px;
+    }
   }
 }
