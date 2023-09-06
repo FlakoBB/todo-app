@@ -1,4 +1,5 @@
 import { FiltersProvider } from '@/context/filterContext'
+import { TasksProvider } from '@/context/tasksContext'
 import '@styles/globals.scss'
 import { Jost } from 'next/font/google'
 
@@ -14,7 +15,9 @@ export default function RootLayout ({ children }) {
     <html lang='en'>
       <body className={jost.className}>
         <FiltersProvider>
-          {children}
+          <TasksProvider>
+            {children}
+          </TasksProvider>
         </FiltersProvider>
       </body>
     </html>

@@ -1,16 +1,19 @@
-import { useState } from 'react'
+'use client'
+
+import { useContext, useState } from 'react'
 import { Plus } from '@icons'
 import styles from '@styles/newTaskInput.module.scss'
+import { tasksContext } from '@/context/tasksContext'
+import { v4 as uuidv4 } from 'uuid'
 
 const NewTaskInput = () => {
   const [newTask, setNewTask] = useState('')
 
-  // const list = localStorage.getItem('tasks')
-  // ToDo: crear otro contexto para obtener la lista o pasar por props
+  const { tasksList, setTasksList } = useContext(tasksContext)
 
   const addTask = () => {
     if (newTask.trim() !== '') {
-      console.log(newTask)
+      setTasksList([...tasksList, { id: uuidv4(), title: newTask, isCompleted: false }])
       setNewTask('')
     }
   }
@@ -22,6 +25,7 @@ const NewTaskInput = () => {
         placeholder='Add new task...'
         value={newTask}
         onChange={(event) => setNewTask(event.target.value)}
+        onKeyDown={(event) => { if (event.key === 'Enter') addTask() }}
       />
       <button onClick={addTask} className={styles.addButton}>
         Add

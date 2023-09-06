@@ -2,12 +2,20 @@
 
 import styles from '@styles/task.module.scss'
 import { Check, Trash } from '@icons'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { tasksContext } from '@/context/tasksContext'
 
-const Checkbox = ({ id, state }) => {
-  const [isChecked, setIsChecked] = useState(state)
+const Checkbox = ({ id, isCompleted }) => {
+  const [isChecked, setIsChecked] = useState(isCompleted)
+
+  const { tasksList } = useContext(tasksContext)
 
   const handleCheck = () => {
+    const currentTask = tasksList.find(task => task.id === id)
+    if (currentTask) {
+      currentTask.isCompleted = !currentTask.isCompleted
+      localStorage.setItem('tasks', JSON.stringify(tasksList))
+    }
     setIsChecked(!isChecked)
   }
 
@@ -25,11 +33,11 @@ const Checkbox = ({ id, state }) => {
   )
 }
 // ToDo: sinchronize state (isCompleted and isChecked)
-const Task = ({ data, id }) => {
+const Task = ({ data }) => {
   return (
     <li className={styles.item}>
-      <Checkbox id={id} state={data.isCompleted} />
-      <label htmlFor={id} className={`${styles.title} ${data.isCompleted && styles.completed}`}>{data.title}</label>
+      <Checkbox id={data.id} isCompleted={data.isCompleted} />
+      <label htmlFor={data.id} className={`${styles.title} ${data.isCompleted && styles.completed}`}>{data.title}</label>
       <button type='button' className={styles.deleteButton}>
         <Trash className={styles.icon} />
       </button>

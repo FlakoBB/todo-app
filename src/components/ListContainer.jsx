@@ -5,7 +5,8 @@ import FilterBar from './FilterBar'
 import NewTaskInput from './NewTaskInput'
 import { Trash } from '@icons'
 import { useFilter, FILTER } from '@/hooks/useFilter'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
+import { tasksContext } from '@/context/tasksContext'
 
 // const tasks = [
 //   {
@@ -27,20 +28,20 @@ import { useEffect, useState } from 'react'
 // ]
 
 const ListContainer = () => {
-  const [tasks, setTasks] = useState([{ id: '1', title: 'title', isCompleted: true }])
+  const { tasksList, setTasksList } = useContext(tasksContext)
 
   const { filterTasks, filter } = useFilter()
 
-  const taskList = filterTasks(tasks)
+  const renderList = filterTasks(tasksList)
 
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-  }, [tasks])
-
-  useEffect(() => {
-    const storedList = localStorage.getItem('tasks')
-    if (storedList) setTasks(JSON.parse(storedList))
+    const currentList = localStorage.getItem('tasks')
+    if (currentList) setTasksList(JSON.parse(currentList))
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasksList))
+  }, [tasksList])
 
   return (
     <section className={styles.container}>
@@ -49,11 +50,11 @@ const ListContainer = () => {
       <ul className={styles.list}>
         {/* // ToDo: Mostrar mensaje en caso de tener una lista vacia */}
         {
-          taskList.map((task, index) => <Task key={index} data={task} id={index} />)
+          renderList.map((task) => <Task key={task.id} data={task} />)
         }
       </ul>
       {
-        filter === FILTER.COMPLETED && taskList.length !== 0 && (
+        filter === FILTER.COMPLETED && renderList.length !== 0 && (
           <button className={styles.deleteAllButton}>
             Delete all
             <Trash className={styles.icon} />
