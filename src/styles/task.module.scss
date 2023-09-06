@@ -75,16 +75,17 @@
     background: none;
     border: none;
     border-radius: .3rem;
+    outline: none;
     cursor: pointer;
 
-    &:hover {
-      background-color: rgba(#BF0606, .2);
+    &:is(:hover, :focus) .icon {
+      stroke: #BF0606;
     }
 
     .icon {
       width: auto;
       height: 70%;
-      stroke: #BF0606;
+      stroke: rgba(#0E1A33, .6);
     }
   }
 }

@@ -6,4 +6,30 @@
   height: 100dvh;
   max-width: 1024px;
   margin: auto;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      position: relative;
+      width: 10rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-align: center;
+      text-transform: capitalize;
+      margin-top: 1rem;
+
+      &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        left: 0;
+        bottom: 38%;
+        border-top: 3px solid #2960AB;
+        border-radius: 3px;
+      }
+    }
+  }
 }

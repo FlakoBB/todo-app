@@ -5,7 +5,9 @@ import styles from '@styles/page.module.scss'
 export default function Home () {
   return (
     <main className={styles.container}>
-      <h1>TODO APP</h1>
+      <header className={styles.header}>
+        <h1>todo app</h1>
+      </header>
       <ListContainer />
       <Footer />
     </main>
