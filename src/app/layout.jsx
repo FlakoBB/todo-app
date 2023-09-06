@@ -1,3 +1,4 @@
+import { FiltersProvider } from '@/context/filterContext'
 import '@styles/globals.scss'
 import { Jost } from 'next/font/google'
 
@@ -11,7 +12,11 @@ export const metadata = {
 export default function RootLayout ({ children }) {
   return (
     <html lang='en'>
-      <body className={jost.className}>{children}</body>
+      <body className={jost.className}>
+        <FiltersProvider>
+          {children}
+        </FiltersProvider>
+      </body>
     </html>
   )
 }

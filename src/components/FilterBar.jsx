@@ -1,53 +1,47 @@
 'use client'
-import { useState } from 'react'
 import styles from '@styles/filterBar.module.scss'
-
-const FILTER = {
-  ALL: 'all',
-  ACTIVE: 'active',
-  COMPLETED: 'completed'
-}
+import { FILTER, useFilter } from '@/hooks/useFilter'
 
 const FilterBar = () => {
-  const [optionSelected, setOptionSelected] = useState(FILTER.ALL)
+  const { filter, setFilter } = useFilter()
 
   const handleOption = (event) => {
     const newOption = event.target.value
-    setOptionSelected(newOption)
+    setFilter(newOption)
   }
 
   return (
     <nav className={styles.container}>
-      <label htmlFor={FILTER.ALL} className={`${styles.option} ${optionSelected === FILTER.ALL && styles.active}`}>
+      <label htmlFor={FILTER.ALL} className={`${styles.option} ${filter === FILTER.ALL && styles.active}`}>
         {FILTER.ALL}
         <input
           id={FILTER.ALL}
           type='radio'
           value={FILTER.ALL}
           name='FILTER'
-          checked={optionSelected === FILTER.ALL}
+          checked={filter === FILTER.ALL}
           onChange={handleOption}
         />
       </label>
-      <label htmlFor={FILTER.ACTIVE} className={`${styles.option} ${optionSelected === FILTER.ACTIVE && styles.active}`}>
+      <label htmlFor={FILTER.ACTIVE} className={`${styles.option} ${filter === FILTER.ACTIVE && styles.active}`}>
         {FILTER.ACTIVE}
         <input
           id={FILTER.ACTIVE}
           type='radio'
           value={FILTER.ACTIVE}
           name='FILTER'
-          checked={optionSelected === FILTER.ACTIVE}
+          checked={filter === FILTER.ACTIVE}
           onChange={handleOption}
         />
       </label>
-      <label htmlFor={FILTER.COMPLETED} className={`${styles.option} ${optionSelected === FILTER.COMPLETED && styles.active}`}>
+      <label htmlFor={FILTER.COMPLETED} className={`${styles.option} ${filter === FILTER.COMPLETED && styles.active}`}>
         {FILTER.COMPLETED}
         <input
           id={FILTER.COMPLETED}
           type='radio'
           value={FILTER.COMPLETED}
           name='FILTER'
-          checked={optionSelected === FILTER.COMPLETED}
+          checked={filter === FILTER.COMPLETED}
           onChange={handleOption}
         />
       </label>
