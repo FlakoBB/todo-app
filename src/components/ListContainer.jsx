@@ -4,9 +4,10 @@ import Task from './Task'
 import FilterBar from './FilterBar'
 import NewTaskInput from './NewTaskInput'
 import { Trash } from '@icons'
-import { useFilter, FILTER } from '@/hooks/useFilter'
+import { useFilter } from '@/hooks/useFilter'
 import { useContext, useEffect } from 'react'
 import { tasksContext } from '@/context/tasksContext'
+import { FiltersContext } from '@/context/filterContext'
 
 // const tasks = [
 //   {
@@ -29,6 +30,7 @@ import { tasksContext } from '@/context/tasksContext'
 
 const ListContainer = () => {
   const { tasksList, setTasksList } = useContext(tasksContext)
+  const { FILTER } = useContext(FiltersContext)
 
   const { filterTasks, filter } = useFilter()
 

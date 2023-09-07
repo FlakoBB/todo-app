@@ -3,14 +3,8 @@
 import { useContext } from 'react'
 import { FiltersContext } from '@/context/filterContext'
 
-export const FILTER = {
-  ALL: 'all',
-  ACTIVE: 'active',
-  COMPLETED: 'completed'
-}
-
 export const useFilter = () => {
-  const { filter, setFilter } = useContext(FiltersContext)
+  const { filter, setFilter, FILTER } = useContext(FiltersContext)
 
   const filterTasks = (tasks) => {
     return tasks.filter(task => {

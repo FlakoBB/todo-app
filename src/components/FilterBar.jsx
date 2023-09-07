@@ -1,9 +1,12 @@
 'use client'
 import styles from '@styles/filterBar.module.scss'
-import { FILTER, useFilter } from '@/hooks/useFilter'
+import { useFilter } from '@/hooks/useFilter'
+import { useContext } from 'react'
+import { FiltersContext } from '@/context/filterContext'
 
 const FilterBar = () => {
   const { filter, setFilter } = useFilter()
+  const { FILTER } = useContext(FiltersContext)
 
   const handleOption = (event) => {
     const newOption = event.target.value
