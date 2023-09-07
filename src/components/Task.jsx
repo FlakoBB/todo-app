@@ -32,13 +32,21 @@ const Checkbox = ({ id, isCompleted }) => {
     </div>
   )
 }
-// ToDo: sinchronize state (isCompleted and isChecked)
+
 const Task = ({ data }) => {
+  const { tasksList, setTasksList } = useContext(tasksContext)
+
+  const deleteTask = () => {
+    const newList = tasksList.filter(task => task.id !== data.id)
+    setTasksList(newList)
+  }
+
   return (
     <li className={styles.item}>
       <Checkbox id={data.id} isCompleted={data.isCompleted} />
+      {/* // ToDo: actualizar estilos de completado al instante */}
       <label htmlFor={data.id} className={`${styles.title} ${data.isCompleted && styles.completed}`}>{data.title}</label>
-      <button type='button' className={styles.deleteButton}>
+      <button onClick={deleteTask} type='button' className={styles.deleteButton}>
         <Trash className={styles.icon} />
       </button>
     </li>
