@@ -12,6 +12,15 @@
     align-items: stretch;
     justify-content: flex-start;
     gap: 1.5rem;
+
+    .messageEmptyList {
+      align-self: center;
+      list-style: none;
+
+      p {
+        font-size: 1.2rem;
+      }
+    }
   }
 
   .deleteAllButton {

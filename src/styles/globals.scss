@@ -5,6 +5,19 @@
   color: #0E1A33;
 }
 
+::-webkit-scrollbar {
+  width: .6rem;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: .4rem;
+  background-color: rgba(#2960AB, .8);
+  
+  &:hover {
+    background-color: rgba(#2960AB, 1);
+  }
+}
+
 html {
   min-height: 100dvh;
   font-size: 16px;

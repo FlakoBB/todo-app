@@ -20,6 +20,8 @@
       text-align: center;
       text-transform: capitalize;
       margin-top: 1rem;
+      user-select: none;
+      cursor: pointer;
 
       &::after {
         position: absolute;
@@ -29,6 +31,13 @@
         bottom: 38%;
         border-top: 3px solid #2960AB;
         border-radius: 3px;
+        transition: all .4s ease-out;
+      }
+
+      &:hover::after {
+        bottom: -2px;
+        border-radius: 4px 4px 0 0;
+        border-top: 4px solid #2960AB;
       }
     }
   }

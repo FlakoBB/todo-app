@@ -5,9 +5,7 @@ import { Check, Trash } from '@icons'
 import { useContext, useState } from 'react'
 import { tasksContext } from '@/context/tasksContext'
 
-const Checkbox = ({ id, isCompleted }) => {
-  const [isChecked, setIsChecked] = useState(isCompleted)
-
+const Checkbox = ({ id, isChecked, setIsChecked }) => {
   const { tasksList } = useContext(tasksContext)
 
   const handleCheck = () => {
@@ -34,6 +32,7 @@ const Checkbox = ({ id, isCompleted }) => {
 }
 
 const Task = ({ data }) => {
+  const [isCompleted, setIsCompleted] = useState(data.isCompleted)
   const { tasksList, setTasksList } = useContext(tasksContext)
 
   const deleteTask = () => {
@@ -43,9 +42,8 @@ const Task = ({ data }) => {
 
   return (
     <li className={styles.item}>
-      <Checkbox id={data.id} isCompleted={data.isCompleted} />
-      {/* // ToDo: actualizar estilos de completado al instante */}
-      <label htmlFor={data.id} className={`${styles.title} ${data.isCompleted && styles.completed}`}>{data.title}</label>
+      <Checkbox id={data.id} isChecked={isCompleted} setIsChecked={setIsCompleted} />
+      <label htmlFor={data.id} className={`${styles.title} ${isCompleted && styles.completed}`}>{data.title}</label>
       <button onClick={deleteTask} type='button' className={styles.deleteButton}>
         <Trash className={styles.icon} />
       </button>

@@ -45,19 +45,42 @@ const ListContainer = () => {
     localStorage.setItem('tasks', JSON.stringify(tasksList))
   }, [tasksList])
 
+  const deleteAllCompleted = () => {
+    const newList = tasksList.filter(task => {
+      if (!task.isCompleted) {
+        return true
+      }
+      return false
+    })
+    setTasksList(newList)
+  }
+
   return (
     <section className={styles.container}>
       <FilterBar />
       <NewTaskInput />
       <ul className={styles.list}>
-        {/* // ToDo: Mostrar mensaje en caso de tener una lista vacia */}
         {
-          renderList.map((task) => <Task key={task.id} data={task} />)
+          renderList.length !== 0
+            ? renderList.map((task) => <Task key={task.id} data={task} />)
+            : (
+              <li className={styles.messageEmptyList}>
+                {
+                  filter === FILTER.ALL && <p>There aren't tasks to show...</p>
+                }
+                {
+                  filter === FILTER.ACTIVE && <p>There aren't active tasks to show...</p>
+                }
+                {
+                  filter === FILTER.COMPLETED && <p>There aren't completed tasks to show...</p>
+                }
+              </li>
+              )
         }
       </ul>
       {
         filter === FILTER.COMPLETED && renderList.length !== 0 && (
-          <button className={styles.deleteAllButton}>
+          <button onClick={deleteAllCompleted} className={styles.deleteAllButton}>
             Delete all
             <Trash className={styles.icon} />
           </button>
